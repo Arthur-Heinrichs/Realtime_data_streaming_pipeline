@@ -1,0 +1,11 @@
+
+#imagem base
+FROM Python:3.9
+#pasta de trabalho
+WORKDIR /app
+#copiando script
+COPY consumer.py /app
+#instalando dependências
+RUN pip install kafka-python faker
+#rodando script
+CMD["python", "consumer.py"]

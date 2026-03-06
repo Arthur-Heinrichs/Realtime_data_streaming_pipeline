@@ -1,0 +1,185 @@
+{
+  "event_id": "evt_9f8a7c",  // função que gera um id com letras, números e caracteres especiais
+  "event_type": "purchase",  // pode ser view_product; add_to_cart; purchase; refund
+  "event_timestamp": "2026-02-26T19:12:45Z",
+
+  "user": {
+    "user_id": "u_10293",
+    "signup_date": "2025-11-10",
+    "loyalty_tier": "gold",
+    "location": {
+      "country": "BR",
+      "state": "SP",
+      "city": "Sao Paulo"
+    }
+  },
+
+  "session": {
+    "session_id": "s_88374",
+    "device": {
+      "device_type": "mobile",
+      "brand": "Apple",
+      "os": "iOS",
+      "app_version": "5.3.1"
+    },
+    "traffic_source": {
+      "source": "google",
+      "medium": "cpc",
+      "campaign": "black_friday"
+    }
+  },
+
+  "product": {
+    "product_id": "p_883",
+    "category": "electronics",
+    "subcategory": "smartphones",
+    "price": 3999.90,
+    "currency": "BRL"
+  },
+
+  "transaction": {
+    "payment_method": "credit_card",
+    "installments": 10,
+    "coupon_code": "BF2026",
+    "discount_amount": 200.00
+  }
+}
+
+
+
+
+{
+  "event_id": "evt_atc_002",
+  "event_type": "add_to_cart",
+  "event_timestamp": "2026-02-26T19:07:22Z",
+
+  "user": {
+    "user_id": "u_10293",
+    "signup_date": "2025-11-10",
+    "loyalty_tier": "gold",
+    "location": {
+      "country": "BR",
+      "state": "SP",
+      "city": "Sao Paulo"
+    }
+  },
+
+  "session": {
+    "session_id": "s_88374",
+    "device": {
+      "device_type": "mobile",
+      "brand": "Apple",
+      "os": "iOS",
+      "app_version": "5.3.1"
+    },
+    "traffic_source": {
+      "source": "google",
+      "medium": "cpc",
+      "campaign": "black_friday"
+    }
+  },
+
+  "product": {
+    "product_id": "p_883",
+    "category": "electronics",
+    "subcategory": "smartphones",
+    "price": 3999.90,
+    "currency": "BRL"
+  },
+
+  "cart": {
+    "quantity": 1,
+    "cart_value": 3999.90
+  }
+}
+
+
+
+{
+  "event_id": "evt_vp_001",
+  "event_type": "view_product",
+  "event_timestamp": "2026-02-26T19:05:10Z",
+
+  "user": {
+    "user_id": "u_10293",
+    "signup_date": "2025-11-10",
+    "loyalty_tier": "gold",
+    "location": {
+      "country": "BR",
+      "state": "SP",
+      "city": "Sao Paulo"
+    }
+  },
+
+  "session": {
+    "session_id": "s_88374",
+    "device": {
+      "device_type": "mobile",
+      "brand": "Apple",
+      "os": "iOS",
+      "app_version": "5.3.1"
+    },
+    "traffic_source": {
+      "source": "google",
+      "medium": "cpc",
+      "campaign": "black_friday"
+    }
+  },
+
+  "product": {
+    "product_id": "p_883",
+    "category": "electronics",
+    "subcategory": "smartphones",
+    "price": 3999.90,
+    "currency": "BRL"
+  }
+
+
+
+
+{
+  "event_id": "evt_rf_003",
+  "event_type": "refund",
+  "event_timestamp": "2026-02-26T20:10:02Z",
+
+  "user": {
+    "user_id": "u_10293",
+    "signup_date": "2025-11-10",
+    "loyalty_tier": "gold",
+    "location": {
+      "country": "BR",
+      "state": "SP",
+      "city": "Sao Paulo"
+    }
+  },
+
+  "session": {
+    "session_id": "s_88374",
+    "device": {
+      "device_type": "mobile",
+      "brand": "Apple",
+      "os": "iOS",
+      "app_version": "5.3.1"
+    },
+    "traffic_source": {
+      "source": "google",
+      "medium": "cpc",
+      "campaign": "black_friday"
+    }
+  },
+
+  "product": {
+    "product_id": "p_883",
+    "category": "electronics",
+    "subcategory": "smartphones",
+    "price": 3999.90,
+    "currency": "BRL"
+  },
+
+  "refund": {
+    "original_event_id": "evt_9f8a7c",
+    "refund_reason": "defective_product",
+    "refund_amount": 3999.90,
+    "refund_method": "credit_card"
+  }
+}
