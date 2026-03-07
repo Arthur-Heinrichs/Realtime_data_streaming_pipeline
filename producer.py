@@ -8,11 +8,17 @@ from datetime import datetime, timezone
 
 
 #Configuracao primaria do kafka
-
-producer = KafkaProducer(
-    bootstrap_servers="kafka:9092",
-    value_serializer=lambda v: json.dumps(v).encode("utf-8")
-)
+while True:
+    try:
+        producer = KafkaProducer(
+            bootstrap_servers="kafka:9092",
+            value_serializer=lambda v: json.dumps(v).encode("utf-8")
+        )
+        print("Connected to Kafka")
+        break
+    except Exception as e:
+        print("Kafka not ready, retrying...")
+        time.sleep(5)
 
 #Codigo gerador de eventos
 EVENT_TYPES = ["view_product", "add_to_cart", "purchase", "refund"]
@@ -63,7 +69,7 @@ def generate_user():
     }
 
 def generate_platform():
-    platform = random.choices(PLATFORMS, weights=[25,70,5])
+    platform = random.choices(PLATFORMS, weights=[25,70,5])[0]
 
     if platform == "web":
         brand =  random.choice(["Dell", "Lenovo", "HP", "Apple"])
@@ -86,7 +92,7 @@ def generate_platform():
                 "device": {
                     "device_type": "desktop",
                     "brand": brand,
-                    "os": random.choices(["Linux", "Windows"], weights=[10, 90])
+                    "os": random.choices(["Linux", "Windows"], weights=[10, 90])[0]
                 },
                 "browser": {
                     "name": random.choice(["Chrome", "Firefox", "Opera"]),
@@ -161,7 +167,7 @@ def generate_product():
         "currency": "BRL"
     }
 def generate_event():
-    event_type = random.choices(EVENT_TYPES, weights=[65,20,10,5])
+    event_type = random.choices(EVENT_TYPES, weights=[65,20,10,5])[0]
     timestamp = datetime.now(timezone.utc).isoformat()
     product = generate_product() 
     event = {
@@ -199,8 +205,10 @@ def generate_event():
 
 
 while True:
-    topic = "client_plataform_usage"
+    topic = "client_platform_usage"
     event = generate_event()
-    key=event["event_id"]
+    key = event["event_id"].encode("utf-8")
     producer.send(topic, key=key, value=event)
+    print("Event sent:", event["event_type"])
+    producer.flush()
     time.sleep(1)

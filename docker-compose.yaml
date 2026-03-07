@@ -1,12 +1,12 @@
 services:
   kafka:
-    image: apache/kafka:latest
+    image: bitnamilegacy/kafka:3.6
     restart: on-failure
     ports:
     - "9092:9092"
     environment:
     - KAFKA_CFG_BROKER_ID=1
-    - KAFKA_CFG_LISTENERS=PLAINTEXT://kafka:9092
+    - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
     - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
     - KAFKA_CFG_NUM_PARTITIONS=3
     - KAFKA_CFG_LOG_RETENTION_HOURS=2
@@ -39,12 +39,13 @@ services:
       context: .
       dockerfile: dockerfile.producer
     depends_on:
-      - kafka
-
-  # consumer:
-  #   container_name: consumer
-  #   build:
-  #   context:.
-  #   dockerfile: Dockerfile.consumer
-  #   depends_on:
-  #   - kafka
+        - kafka
+          
+  consumer:
+    container_name: consumer
+    build:
+      context: .
+      dockerfile: dockerfile.consumer
+    depends_on:
+        - kafka
+          
