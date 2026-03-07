@@ -1,6 +1,6 @@
 services:
   kafka:
-    image: bitnami/kafka:latest
+    image: apache/kafka:latest
     restart: on-failure
     ports:
     - "9092:9092"
@@ -9,11 +9,13 @@ services:
     - KAFKA_CFG_LISTENERS=PLAINTEXT://kafka:9092
     - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
     - KAFKA_CFG_NUM_PARTITIONS=3
+    - KAFKA_CFG_LOG_RETENTION_HOURS=2
+    - KAFKA_CFG_LOG_RETENTION_BYTES=500000000
     - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
     - zookeeper
   zookeeper:
-    image: bitnami/zookeeper:latest
+    image: zookeeper
     ports: 
     - "2181:2181"
     environment:
